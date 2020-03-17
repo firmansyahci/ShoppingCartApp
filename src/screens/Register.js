@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert, Image } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler';
 import Axios from 'axios';
+import { BASE_URL } from 'react-native-dotenv';
 
 export default class Register extends Component {
   constructor(props) {
@@ -21,9 +22,11 @@ export default class Register extends Component {
     this.handlerSubmit = this.handlerSubmit.bind(this);
   }
 
-  validate = () => {
+  validate = async () => {
     let emailErr = '';
     let passwordErr = '';
+
+    if (this.state.email )
 
     if (this.state.password !== this.state.retypepassword) {
       this.setState({ passwordErr: 'password not match' });
@@ -38,7 +41,7 @@ export default class Register extends Component {
     const isValid = this.validate();
     try {
       if (isValid) {
-      await Axios.post('http://192.168.1.7:3001/api/v1/user/signup', {'email': this.state.email, 'password': this.state.password})
+      await Axios.post(BASE_URL + 'user/signup', {'email': this.state.email, 'password': this.state.password})
         .then(respone => {
           this.setState({ successMsg: 'User succesfuly created', redirectLogin: true, passwordErr: '' })
         })
@@ -50,10 +53,6 @@ export default class Register extends Component {
     catch {
       Alert.alert('Error', 'connection error', [{ text: 'Ok' }]);
     }
-
-    // } else {
-    
-    // }
   }
 
   render() {
