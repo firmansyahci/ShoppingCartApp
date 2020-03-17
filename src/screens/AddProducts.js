@@ -5,6 +5,7 @@ import {  ScrollView } from 'react-native-gesture-handler'
 import Axios from 'axios'
 import { connect } from 'react-redux'
 import { postProduct } from '../redux/actions/product'
+import { BASE_URL } from 'react-native-dotenv';
 
 export class AddProducts extends Component {
     constructor() {
@@ -22,7 +23,7 @@ export class AddProducts extends Component {
     }
 
     componentDidMount = async () => {
-        const cat = await Axios.get('http://192.168.1.7:3001/api/v1/category/');
+        const cat = await Axios.get(BASE_URL+'category/');
         this.setState({
             category: cat.data.result
         })

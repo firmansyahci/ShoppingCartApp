@@ -9,6 +9,7 @@ import AsyncStorage from '@react-native-community/async-storage'
 import Axios from 'axios'
 import ImagePicker from 'react-native-image-picker'
 import { set } from 'react-native-reanimated'
+import { URL } from 'react-native-dotenv';
 
 const ListItemComp = (props) => {
     const { id, name, price, description, image, stock, category_id } = props.data;
@@ -112,7 +113,7 @@ const ListItemComp = (props) => {
                     <ListItem key={id}>
                         <Left>
                             <TouchableOpacity onPress={addCart}>
-                                {image ? <Thumbnail square source={{ uri: `${image.replace('localhost', '192.168.1.196')}` }} /> : <Text>No Image</Text>}
+                                {image ? <Thumbnail square source={{ uri: `${image.replace('localhost', URL)}` }} /> : <Text>No Image</Text>}
                             </TouchableOpacity>
                         </Left>
                         <Body>

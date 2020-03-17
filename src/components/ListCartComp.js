@@ -4,6 +4,7 @@ import { Content, List, ListItem, Left, Body, Right, Thumbnail, Card, CardItem, 
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { patchCart, deleteDetailCart } from '../redux/actions/cart'
 import { connect } from 'react-redux'
+import { URL } from 'react-native-dotenv';
 
 
 const ListCartComp = (props) => {
@@ -31,7 +32,7 @@ const ListCartComp = (props) => {
                     <ListItem>
                         <View style={{ flex: 2, marginRight: 30 }}>
                             <Left>
-                                {image ? <Thumbnail square source={{ uri: `${image.replace('localhost', '192.168.1.196')}` }} /> : <Text>No Image</Text>}
+                                {image ? <Thumbnail square source={{ uri: `${image.replace('localhost', URL)}` }} /> : <Text>No Image</Text>}
                             </Left>
                         </View>
                         <View style={{ flex: 3 }}>
