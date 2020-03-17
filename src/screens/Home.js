@@ -9,6 +9,7 @@ import { getProduct } from '../redux/actions/product'
 import AsyncStorage from '@react-native-community/async-storage';
 import { Header, Title, Body, Left, Item, Input, Right } from 'native-base'
 import AddProduct from './AddProducts'
+import { BASE_URL } from 'react-native-dotenv';
 
 export class Home extends Component {
     constructor() {
@@ -51,7 +52,7 @@ export class Home extends Component {
     }
 
     getCategory = async () => {
-        const cat = await Axios.get('http://192.168.1.196:3001/api/v1/category/');
+        const cat = await Axios.get(BASE_URL + 'category/');
         this.setState({
             category: cat.data.result
         })
@@ -80,7 +81,7 @@ export class Home extends Component {
     Search = async (key) => {
         try {
             if (this.state.search.length > 2) {
-                const response = await Axios.get(`http://192.168.1.196:3001/api/v1/product/search/${key}`);
+                const response = await Axios.get(`${BASE_URL}product/search/${key}`);
                 this.setState({
                     result: response.data.result,
                     loading: false,

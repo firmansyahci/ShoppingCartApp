@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert, Image } from 'react-native'
 import Axios from 'axios';
 import AsyncStorage from '@react-native-community/async-storage';
+import { BASE_URL } from 'react-native-dotenv';
 
 export default class Login extends Component {
   constructor() {
@@ -13,17 +14,23 @@ export default class Login extends Component {
       error: false,
       token: ''
     }
+    this.bootstrapAsync();
+  }
+
+  bootstrapAsync = async () => {
+    const token = await AsyncStorage.getItem('token');
+    this.props.navigation.navigate(token ? 'Home' : 'Login');
   }
 
   validateUser = async () => {
     try {
-      const response = await Axios.post('http://192.168.1.196:3001/api/v1/user/login', this.state);
+      const response = await Axios.post(BASE_URL + 'user/login', this.state);
       this.setState({
         token: response.data.token,
         loading: false,
         error: false
       })
-      AsyncStorage.setItem('token', response.data.token)
+      await AsyncStorage.setItem('token', response.data.token)
       this.props.navigation.navigate('Home');
       // navigation.dispatch(
       //   StackActions.replace('Home'));

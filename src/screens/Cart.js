@@ -64,8 +64,8 @@ export class Cart extends Component {
                             <Left>
                                 <Text>Total</Text>
                             </Left>
-                            <Right>
-                                <Text>Rp.{totalCart}</Text>
+                            <Right style={{flex: 2}}>
+                                <Text>Rp.{totalCart.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.")}</Text>
                             </Right>
                         </ListItem>
                     </List>

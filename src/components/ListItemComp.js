@@ -117,7 +117,7 @@ const ListItemComp = (props) => {
                         </Left>
                         <Body>
                             <Text>{name}</Text>
-                            <Text>Rp. {price}</Text>
+                            <Text>Rp. {price.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.")}</Text>
                         </Body>
                         <Right>
                             <Grid>

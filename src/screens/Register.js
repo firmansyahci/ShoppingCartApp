@@ -38,7 +38,7 @@ export default class Register extends Component {
     const isValid = this.validate();
     try {
       if (isValid) {
-      await Axios.post('http://192.168.1.196:3001/api/v1/user/signup', {'email': this.state.email, 'password': this.state.password})
+      await Axios.post('http://192.168.1.7:3001/api/v1/user/signup', {'email': this.state.email, 'password': this.state.password})
         .then(respone => {
           this.setState({ successMsg: 'User succesfuly created', redirectLogin: true, passwordErr: '' })
         })

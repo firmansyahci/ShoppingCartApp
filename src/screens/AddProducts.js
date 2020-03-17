@@ -22,7 +22,7 @@ export class AddProducts extends Component {
     }
 
     componentDidMount = async () => {
-        const cat = await Axios.get('http://192.168.1.196:3001/api/v1/category/');
+        const cat = await Axios.get('http://192.168.1.7:3001/api/v1/category/');
         this.setState({
             category: cat.data.result
         })

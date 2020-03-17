@@ -40,10 +40,10 @@ export class History extends Component {
                     <Text>{detailHistorys.id}</Text>
                 </Left>
                 <Body>
-                    <Text>{detailHistorys.created_at}</Text>
+                    <Text>{detailHistorys.created_at.substr(0,10)}</Text>
                 </Body>
                 <Right style={{ flex: 1 }}>
-                    <Text>Rp. {detailHistorys.price}</Text>
+                    <Text>Rp. {detailHistorys.price.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.")}</Text>
                 </Right>
             </ListItem>
         })
@@ -57,11 +57,11 @@ export class History extends Component {
                 </Header>
                 <View style={cardBox}>
                     <Text style={fontWhite}>Total Price</Text>
-                    <Text style={fontWhite}>Rp. {totalPrice} </Text>
+                    <Text style={fontWhite}>Rp. {totalPrice.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.")} </Text>
                 </View>
                 <View style={cardBox1}>
                     <Text style={fontWhite}>Total Orders</Text>
-                    <Text style={fontWhite}> {countOrders} </Text>
+                    <Text style={fontWhite}> {countOrders.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.")} </Text>
                 </View>
                 <View style={sectionDetail}>
                     <ScrollView>

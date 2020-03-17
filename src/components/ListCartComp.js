@@ -56,7 +56,7 @@ const ListCartComp = (props) => {
                         </View>
                         <View style={{ flex: 2, marginLeft: 30}}>
                             <Right>
-                                <Text style={{ fontSize: 14 }}>Rp.{total_price}</Text>
+                                <Text style={{ fontSize: 14 }}>Rp.{total_price.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.")}</Text>
                             </Right>
                         </View>
                     </ListItem>
